@@ -1,16 +1,10 @@
-# Next.js Starter Template
-Get started on projects faster with a bare-bones approach.
+# To Do
 
-## Getting Started
-1. Click `Use this template` at the top right of this page to clone the repo into your own account.
-1. Once in your account, clone the repo to your machine and run 
-    ```Javascript
-    npm install
-    ```
-    to install all required packages.
+## Order Form
+- [ ] Get user input with react-hook-form
+- [ ] Send order to api
+- [ ] Display success message
+- [ ] Style form
 
-1. Finally, run
-    ```Javascript
-    npm run dev
-    ```
-    to start the development server on default port `3000`
+## API
+- [ ] Get put request from front end and insert into database
