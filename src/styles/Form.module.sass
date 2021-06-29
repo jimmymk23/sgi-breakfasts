@@ -1,0 +1,75 @@
+@use '_helpers' as *
+
+.guestInfo
+    .basicLabel
+        display: block
+        margin: 1em 0 0.5em
+        color: #5a5a5a
+        border: none
+    .textInput
+        width: 100%
+        font-size: inherit
+        padding: 7px
+        outline: none
+        border: 2px solid transparentize($main-color, 0.5)
+        border-radius: 0.5em
+        &:hover, &:focus
+            border: 2px solid $main-color
+
+.orderForm
+    width: 95vw
+    max-width: 400px
+    margin: 0 auto 3em
+    section
+        margin-top: 2em
+        &:first-of-type
+            margin-top: none
+    
+
+.options
+    display: flex
+    flex-flow: column nowrap
+    gap: 0.5em
+    width: 100%
+    margin-top: 0.5em
+    input[type='radio'],input[type='checkbox']
+        display: none
+        &:checked + label
+            background-color: $main-color
+            color: white
+    label
+        position: relative
+        display: flow-root
+        color: $main-color
+        border: 2px solid $main-color
+        border-radius: 1em
+        padding: 1em 1.5em
+        cursor: pointer
+
+.textArea
+    width: 100%
+    font-size: inherit
+    padding: 7px
+    outline: none
+    border: 2px solid transparentize($main-color, 0.5)
+    border-radius: 0.5em
+    margin-top: 0.5em
+    font-size: inherit
+    font-family: inherit
+    &:hover, &:focus
+        border: 2px solid $main-color
+
+.buttons
+    display: flex
+    margin: 0 0 3em
+
+.submitButton
+    background: $main-color
+    color: white
+    border: none
+    border-radius: 1em
+    padding: 1em 1.5em
+    font-size: inherit
+    font-family: inherit
+    &:hover, &:focus
+        background: darken($main-color, 20%)

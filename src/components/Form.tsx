@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import styles from '../styles/Form.modue.sass';
+import styles from '../styles/Form.module.sass';
 
 export default function App() {
 	const {
@@ -73,165 +73,252 @@ export default function App() {
 	];
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
-			section.
-			<input
-				type='text'
-				placeholder='Name'
-				{...register('name', { required: true })}
-			/>
-			<input
-				type='email'
-				placeholder='Email'
-				{...register('email', { required: true })}
-			/>
-			<input
-				type='number'
-				placeholder='Room Number'
-				{...register('roomNumber', { required: true })}
-			/>
+		<form className={styles.orderForm} onSubmit={handleSubmit(onSubmit)}>
+			<section className={styles.guestInfo}>
+				<label className={styles.basicLabel} htmlFor='name'>
+					Name
+				</label>
+				<input
+					type='text'
+					id='name'
+					className={styles.textInput}
+					{...register('name', { required: true })}
+				/>
+
+				<label className={styles.basicLabel} htmlFor='email'>
+					Email
+				</label>
+				<input
+					type='email'
+					id='email'
+					className={styles.textInput}
+					{...register('email', { required: true })}
+				/>
+
+				<label className={styles.basicLabel} htmlFor='roomNumber'>
+					Room Number
+				</label>
+				<input
+					type='number'
+					id='roomNumber'
+					className={styles.textInput}
+					{...register('roomNumber', { required: true })}
+				/>
+			</section>
 			{/* DELIVERY TIME */}
-			{deliveryTimes.map((time) => {
-				return (
-					<div key={time}>
-						<input
-							{...register('deliveryTime', { required: true })}
-							type='radio'
-							value={time}
-							id={`time-${time}`}
-						/>
-						<label htmlFor={`time-${time}`}>{time}</label>
-					</div>
-				);
-			})}
+			<section className='deliveryTime'>
+				<h3>Delivery Time</h3>
+				<div className={styles.options}>
+					{deliveryTimes.map((time) => {
+						return (
+							<div key={time}>
+								<input
+									{...register('deliveryTime', {
+										required: true,
+									})}
+									type='radio'
+									value={time}
+									id={`time-${time}`}
+								/>
+								<label htmlFor={`time-${time}`}>{time}</label>
+							</div>
+						);
+					})}
+				</div>
+			</section>
+
 			{/* BAKED GOODS */}
-			{bakedGoods.map((item) => {
-				return (
-					<div key={item}>
-						<input
-							{...register('bakedGoods')}
-							type='radio'
-							value={item}
-							id={`baked-${item}`}
-						/>
-						<label htmlFor={`baked-${item}`}>{item}</label>
-					</div>
-				);
-			})}
+			<section className='bakedGoods'>
+				<h3>Baked Goods</h3>
+				<div className={styles.options}>
+					{bakedGoods.map((item) => {
+						return (
+							<div key={item}>
+								<input
+									{...register('bakedGoods')}
+									type='radio'
+									value={item}
+									id={`baked-${item}`}
+								/>
+								<label htmlFor={`baked-${item}`}>{item}</label>
+							</div>
+						);
+					})}
+				</div>
+			</section>
+
 			{/* SAVORY */}
-			{savory.map((item) => {
-				return (
-					<div key={item}>
-						<input
-							{...register('savory')}
-							type='radio'
-							value={item}
-							id={`savory-${item}`}
-						/>
-						<label htmlFor={`savory-${item}`}>{item}</label>
-					</div>
-				);
-			})}
+			<section className='savory'>
+				<h3>Savory</h3>
+				<div className={styles.options}>
+					{savory.map((item) => {
+						return (
+							<div key={item}>
+								<input
+									{...register('savory')}
+									type='radio'
+									value={item}
+									id={`savory-${item}`}
+								/>
+								<label htmlFor={`savory-${item}`}>{item}</label>
+							</div>
+						);
+					})}
+				</div>
+			</section>
 			{/* CEREAL AND YOGURT */}
-			{yogurtCereal.map((item) => {
-				return (
-					<div key={item}>
-						<input
-							{...register('yogurtCereal')}
-							type='radio'
-							value={item}
-							id={`yogurtCereal-${item}`}
-						/>
-						<label htmlFor={`yogurtCereal-${item}`}>{item}</label>
-					</div>
-				);
-			})}
+			<section className='yogurtCereal'>
+				<h3>Yogurt & Cereal</h3>
+				<div className={styles.options}>
+					{yogurtCereal.map((item) => {
+						return (
+							<div key={item}>
+								<input
+									{...register('yogurtCereal')}
+									type='radio'
+									value={item}
+									id={`yogurtCereal-${item}`}
+								/>
+								<label htmlFor={`yogurtCereal-${item}`}>
+									{item}
+								</label>
+							</div>
+						);
+					})}
+				</div>
+			</section>
 			{/* MILK FOR CEREAL */}
-			{cerealMilk.map((item) => {
-				return (
-					<div key={item}>
-						<input
-							{...register('cerealMilk')}
-							type='radio'
-							value={item}
-							id={`cerealMilk-${item}`}
-						/>
-						<label htmlFor={`cerealMilk-${item}`}>{item}</label>
-					</div>
-				);
-			})}
+			<section className='cerealMilk'>
+				<h3>Milk For Cereal</h3>
+				<div className={styles.options}>
+					{cerealMilk.map((item) => {
+						return (
+							<div key={item}>
+								<input
+									{...register('cerealMilk')}
+									type='radio'
+									value={item}
+									id={`cerealMilk-${item}`}
+								/>
+								<label htmlFor={`cerealMilk-${item}`}>
+									{item}
+								</label>
+							</div>
+						);
+					})}
+				</div>
+			</section>
 			{/* HOT BEVERAGES */}
-			{hotBeverages.map((item) => {
-				return (
-					<div key={item}>
-						<input
-							{...register('hotBeverages')}
-							type='checkbox'
-							value={item}
-							id={`hotBeverages-${item}`}
-						/>
-						<label htmlFor={`hotBeverages-${item}`}>{item}</label>
-					</div>
-				);
-			})}
+			<section className='hotBeverages'>
+				<h3>Hot Beverages</h3>
+				<div className={styles.options}>
+					{hotBeverages.map((item) => {
+						return (
+							<div key={item}>
+								<input
+									{...register('hotBeverages')}
+									type='radio'
+									value={item}
+									id={`hotBeverages-${item}`}
+								/>
+								<label htmlFor={`hotBeverages-${item}`}>
+									{item}
+								</label>
+							</div>
+						);
+					})}
+				</div>
+			</section>
 			{/* MILK FOR BEVERAGES */}
-			{beverageMilk.map((item) => {
-				return (
-					<div key={item}>
-						<input
-							{...register('beverageMilk')}
-							type='checkbox'
-							value={item}
-							id={`beverageMilk-${item}`}
-						/>
-						<label htmlFor={`beverageMilk-${item}`}>{item}</label>
-					</div>
-				);
-			})}
+			<section className='beverageMilk'>
+				<h3>Milk for Beverages</h3>
+				<div className={styles.options}>
+					{beverageMilk.map((item) => {
+						return (
+							<div key={item}>
+								<input
+									{...register('beverageMilk')}
+									type='radio'
+									value={item}
+									id={`beverageMilk-${item}`}
+								/>
+								<label htmlFor={`beverageMilk-${item}`}>
+									{item}
+								</label>
+							</div>
+						);
+					})}
+				</div>
+			</section>
 			{/* COLD BEVERAGES */}
-			{coldBeverages.map((item) => {
-				return (
-					<div key={item}>
-						<input
-							{...register('coldBeverages')}
-							type='radio'
-							value={item}
-							id={`coldBeverages-${item}`}
-						/>
-						<label htmlFor={`coldBeverages-${item}`}>{item}</label>
-					</div>
-				);
-			})}
+			<section className='coldBeverages'>
+				<h3>Cold Beverages</h3>
+				<div className={styles.options}>
+					{coldBeverages.map((item) => {
+						return (
+							<div key={item}>
+								<input
+									{...register('coldBeverages')}
+									type='radio'
+									value={item}
+									id={`coldBeverages-${item}`}
+								/>
+								<label htmlFor={`coldBeverages-${item}`}>
+									{item}
+								</label>
+							</div>
+						);
+					})}
+				</div>
+			</section>
 			{/* FRUIT */}
-			{fruit.map((item) => {
-				return (
-					<div key={item}>
-						<input
-							{...register('fruit')}
-							type='radio'
-							value={item}
-							id={`fruit-${item}`}
-						/>
-						<label htmlFor={`fruit-${item}`}>{item}</label>
-					</div>
-				);
-			})}
+			<section className='fruit'>
+				<h3>Fruit</h3>
+				<div className={styles.options}>
+					{fruit.map((item) => {
+						return (
+							<div key={item}>
+								<input
+									{...register('fruit')}
+									type='radio'
+									value={item}
+									id={`fruit-${item}`}
+								/>
+								<label htmlFor={`fruit-${item}`}>{item}</label>
+							</div>
+						);
+					})}
+				</div>
+			</section>
 			{/* ADD ONS */}
-			{addOns.map((item) => {
-				return (
-					<div key={item}>
-						<input
-							{...register('addOns')}
-							type='checkbox'
-							value={item}
-							id={`addOns-${item}`}
-						/>
-						<label htmlFor={`addOns-${item}`}>{item}</label>
-					</div>
-				);
-			})}
+			<section className='addOns'>
+				<h3>Add Ons</h3>
+				<div className={styles.options}>
+					{addOns.map((item) => {
+						return (
+							<div key={item}>
+								<input
+									{...register('addOns')}
+									type='checkbox'
+									value={item}
+									id={`addOns-${item}`}
+								/>
+								<label htmlFor={`addOns-${item}`}>{item}</label>
+							</div>
+						);
+					})}
+				</div>
+			</section>
+
+            <section className="specialInstructions">
+                <h3>Special Instructions</h3>
+                <textarea {...register("Special Instructions")} className={styles.textArea} />
+            </section>
+
 			{/* SUBMIT BUTTON */}
-			<input type='submit' />
+			<section className='buttons'>
+				<button type='submit' className={styles.submitButton}>Place Order</button>
+			</section>
 		</form>
 	);
 }
